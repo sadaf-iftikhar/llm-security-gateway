@@ -88,7 +88,6 @@ and response latency in milliseconds.
 
 ## System Pipeline
 
-```
 User Input
     ↓
 Rate Limit Check
@@ -100,9 +99,6 @@ Presidio PII Scan
 Policy Decision
     ↓
 Allow / Mask / Block
-```
-
----
 
 ## Requirements
 
