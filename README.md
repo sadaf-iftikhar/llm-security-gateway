@@ -116,7 +116,7 @@ Allow / Mask / Block
 
 **Step 1: Clone this repository**
 ```
-git clone https://github.com/yourusername/llm-security-gateway
+git clone https://github.com/sadaf-iftikhar/llm-security-gateway
 cd llm-security-gateway
 ```
 
