@@ -115,10 +115,10 @@ Allow / Mask / Block
 ## Installation Steps
 
 **Step 1: Clone this repository**
-```
+
 git clone https://github.com/sadaf-iftikhar/llm-security-gateway
 cd llm-security-gateway
-```
+
 
 **Step 2: Create virtual environment**
 ```
