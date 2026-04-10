@@ -38,12 +38,16 @@ get temporarily blocked for 60 seconds after 5 attempts.
 ---
 
 ## Project Structure
+
+```
 llm-security-gateway/
 │
 ├── config.py         # All thresholds and settings in one place
 ├── recognizers.py    # Custom Presidio detectors for Pakistani formats
 ├── detector.py       # Injection scoring, PII scanning, rate limiting
 └── main.py           # FastAPI server and policy decision logic
+```
+
 ---
 
 ## What Each File Does
@@ -83,17 +87,20 @@ and response latency in milliseconds.
 ---
 
 ## System Pipeline
+
+```
 User Input
-↓
+    ↓
 Rate Limit Check
-↓
+    ↓
 Injection Detection
-↓
+    ↓
 Presidio PII Scan
-↓
+    ↓
 Policy Decision
-↓
+    ↓
 Allow / Mask / Block
+```
 
 ---
 
@@ -108,36 +115,61 @@ Allow / Mask / Block
 ## Installation Steps
 
 **Step 1: Clone this repository**
-git clone https://github.com/sadaf-iftikhar/llm-security-gateway
+```
+git clone https://github.com/yourusername/llm-security-gateway
 cd llm-security-gateway
+```
+
 **Step 2: Create virtual environment**
+```
 python -m venv venv
+```
 
 **Step 3: Activate virtual environment**
+
 On Windows:
+```
 venv\Scripts\activate
+```
+
 On Linux or Mac:
+```
 source venv/bin/activate
+```
 
 **Step 4: Install all required packages**
+```
 pip install fastapi uvicorn presidio-analyzer presidio-anonymizer spacy
+```
 
 **Step 5: Download the English language model for spacy**
+```
 python -m spacy download en_core_web_lg
+```
+
 This step downloads a large file so it may take a few 
 minutes depending on your internet speed.
+
 ---
 
 ## How to Run the System
 
 Make sure virtual environment is activated then run:
+
+```
 uvicorn main:app --reload
+```
 
 You will see this message when it starts successfully:
+```
 INFO: Uvicorn running on http://127.0.0.1:8000
+```
 
 Open your browser and go to:
+```
 http://127.0.0.1:8000/docs
+```
+
 You will see the full interactive API interface where you 
 can test all endpoints.
 
