@@ -34,39 +34,22 @@ llm-security-gateway/
 
 **config.py**
 
-Stores all the optionable values such as block threshold, mask. 
-minimum confidence score, threshold, rate limit attempts, 
-and time window. In case you wish to make the system more strick or 
-more relaxed you just amend figures in this file.
+Stores all the optionable values such as block threshold, mask minimum confidence score, threshold, rate limit attempts, and time window. Should you desire to render the system strickter or more relaxed you just amend figures in this file.
 
 **recognizers.py**
 
-Adds four custom recognizers to Presidio that are not 
-available by default. Pakistani phone numbers in both local 
-03XX format and international plus 92 format. Pakistani CNIC 
-in the standard five dash seven dash one format. API keys 
-that start with sk dash. Student IDs and Employee IDs used 
-inside organizations. Each recognizer also has context words 
-that boost confidence when nearby words match.
+Adds four custom recognizers to Presidio not available by default. local phone numbers in both local. 03XX format and international plus 92 format. CNIC in the regular five dash seven dash one format. API keys  that begin at sk dash. Employee IDs and Student IDs used inside organizations. Each recognizer also has context words that enhances confidence when similar words are in proximity.
 
 **detector.py**
 
-Contains all the checking logic. The injection scoring 
-function normalizes text first to catch mixed case and 
-extra space tricks then checks against 20 plus known attack 
-phrases. The PII scanning function runs Presidio with all 
-custom recognizers and filters results by confidence score. 
-Composite risk is calculated based on how many different 
-types of PII appear together. Rate limiting tracks each 
-user separately.
+Contains all the checking logic. The injection scoring function normalizes text to initial stage to identify mixed case and <|human|>function normalizes text to preliminary stage to identify mixed case and extra space tricks then checks plus known attack 20 phrases. The Presidio all scanning run is the PII scanning custom recognizers and by confidence score results. 
+Composite risk is determined depending on the number of different forms of PII are combined. Limit rate per user separately.
 
 **main.py**
 
 Runs the FastAPI server. Receives messages from users. Calls 
-the functions from detector.py in the correct pipeline order. 
-Returns the final decision with full details including 
-injection score, PII types found, composite risk level, 
-and response latency in milliseconds.
+runs the detector.py functions in the right sequence in the pipeline.
+Provides the final decision in detail with score in injection, PII types identified, composite level of risk, and latency of response in milliseconds.
 
 ---
 ## System Pipeline
@@ -118,8 +101,6 @@ pip install fastapi uvicorn presidio-analyzer presidio-anonymizer spacy
 ```
 python -m spacy download en_core_web_lg
 ```
-This step downloads a large file so it may take a few 
-minutes depending on your internet speed.
 
 ---
 ## How to Run the System
@@ -146,8 +127,7 @@ Open your browser and go to:
 ```
 http://127.0.0.1:8000/docs
 ```
-You will see the full interactive API interface where you 
-can test all endpoints.
+You will see the interactive API interface.
 
 ---
 ## How to Reproduce Evaluation Results
@@ -204,9 +184,7 @@ Expected Result: BLOCK
 **Test 6 - Rate Limit Test**
 Expected Result: BLOCKED after 5 attempts
 
-Send this exact request 6 times in a row using the same 
-user_id and you will see the system block the user on 
-the 6th attempt.
+Make this request 6 times consecutively and with the same user id and you will notice that the system blocks the user on the 6 th attempt.
 ```json
 {
   "user_id": "attacker_01",
@@ -215,7 +193,7 @@ the 6th attempt.
 ```
 ---
 ## Demo Video
-Watch the full system demo here:
+Watch full system demo here:
 [Demo Video Link](https://drive.google.com/file/d/1437toVTgr3jHphlFPyMZdLXxMWaQw9Qz/view?usp=drivesdk)
 
 ---
