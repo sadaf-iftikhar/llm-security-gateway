@@ -123,7 +123,18 @@ minutes depending on your internet speed.
 
 ---
 ## How to Run the System
-Make sure virtual environment is activated then run:
+Go to the command prompt(cmd)
+Make sure you're inside the folder
+```
+cd llm-security-gateway
+```
+Make sure virtual environment is activated
+On Windows:
+```
+venv\Scripts\activate
+```
+then run:
+
 ```
 uvicorn main:app --reload
 ```
