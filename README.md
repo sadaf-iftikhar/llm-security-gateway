@@ -44,12 +44,14 @@ llm-security-gateway/
 ```
 ---
 ## What Each File Does
+
 **config.py**
 
 Stores all the optionable values such as block threshold, mask. 
 minimum confidence score, threshold, rate limit attempts, 
 and time window. In case you wish to make the system more strick or 
 more relaxed you just amend figures in this file.
+
 **recognizers.py**
 
 Adds four custom recognizers to Presidio that are not 
@@ -59,6 +61,7 @@ in the standard five dash seven dash one format. API keys
 that start with sk dash. Student IDs and Employee IDs used 
 inside organizations. Each recognizer also has context words 
 that boost confidence when nearby words match.
+
 **detector.py**
 
 Contains all the checking logic. The injection scoring 
@@ -69,6 +72,7 @@ custom recognizers and filters results by confidence score.
 Composite risk is calculated based on how many different 
 types of PII appear together. Rate limiting tracks each 
 user separately.
+
 **main.py**
 
 Runs the FastAPI server. Receives messages from users. Calls 
