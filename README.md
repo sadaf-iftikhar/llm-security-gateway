@@ -5,19 +5,19 @@
 ---
 ## What This Project Does
 Large Language Models can be tricked very easily. Someone 
-can simply type the correct words and the model begins to disregard
-its rules, leaking classified information or acting in a manner
-it should never behave. This is a security gateway project 
-that is between the user and the LLM and verifies each
+can simply type the correct words and the model begins to 
+disregard its rules, leaking classified information or acting 
+in a manner it should never behave. This is a security gateway
+project that is between the user and the LLM and verifies each
 single message prior to passing through.
 
 Three things are done by the gateway. First it checks if the message 
-has any pattern of attack such as prompt injection or jailbreak. 
-phrases. Second it searches the message of sensitive personal. 
+has any pattern of attack such as prompt injection or jailbreak
+phrases. Second it searches the message of sensitive personal
 information like Pakistani phone numbers, CNIC numbers, API 
 keys, and email addresses by use of Microsoft Presidio. Third it 
 makes a policy decision on the basis of what it discovered. The message 
-is either admitted as it is, or repudiated with sensitive. 
+is either admitted as it is, or repudiated with sensitive
 masked and buried parts or blocked out.
 
 In case a person continues to spam with suspicious messages they 
