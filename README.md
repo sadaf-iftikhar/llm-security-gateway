@@ -42,14 +42,15 @@ Adds four custom recognizers to Presidio not available by default. local phone n
 
 **detector.py**
 
-Contains all the checking logic. The injection scoring function normalizes text to initial stage to identify mixed case and <|human|>function normalizes text to preliminary stage to identify mixed case and extra space tricks then checks plus known attack 20 phrases. The Presidio all scanning run is the PII scanning custom recognizers and by confidence score results. 
+Contains all the checking logic. The injection scoring function normalizes text to initial stage to identify mixed case and human function normalizes text to preliminary stage to identify mixed case and extra space tricks then checks plus known attack 20 phrases. 
+The Presidio all scanning run is the PII scanning custom recognizers and by confidence score results. 
 Composite risk is determined depending on the number of different forms of PII are combined. Limit rate per user separately.
 
 **main.py**
 
-Runs the FastAPI server. Receives messages from users. Calls 
-runs the detector.py functions in the right sequence in the pipeline.
-Provides the final decision in detail with score in injection, PII types identified, composite level of risk, and latency of response in milliseconds.
+Runs the FastAPI server. Receives messages from users. Calls runs the detector.py functions in the right sequence in the pipeline.
+Provides the final decision in detail with score in injection, PII types identified, composite level of risk, and latency of response
+in milliseconds.
 
 ---
 ## System Pipeline
