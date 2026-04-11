@@ -5,10 +5,10 @@
 ---
 ## What This Project Does
 Large Language Models can be tricked very easily. Someone 
-can simply type the correct words and the model begins to disregard. 
-its rules, leaking classified information or acting in a manner. 
-it should never behave. This is a security gateway project. 
-that is between the user and the LLM and verifies each. 
+can simply type the correct words and the model begins to disregard
+its rules, leaking classified information or acting in a manner
+it should never behave. This is a security gateway project 
+that is between the user and the LLM and verifies each
 single message prior to passing through.
 
 Three things are done by the gateway. First it checks if the message 
