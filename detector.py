@@ -19,7 +19,6 @@ anonymizer = AnonymizerEngine()
 for recognizer in get_custom_recognizers():
     analyzer.registry.add_recognizer(recognizer)
 
-# Rate limiting tracker
 attempt_log = defaultdict(list)
 
 # Attack phrases 
@@ -40,7 +39,7 @@ ATTACK_PHRASES = [
     "pretend you are",
     "you are now",
     "roleplay as",
-    # System prompt extraction
+    # System prompt
     "reveal system prompt",
     "show your instructions",
     "repeat everything above",
@@ -81,18 +80,12 @@ def get_injection_score(text: str):
 
 def scan_pii(text: str):
     raw_results = analyzer.analyze(text=text, language="en")
-
-    # Confidence calibration: only keep results above threshold
     filtered = [r for r in raw_results if r.score >= MIN_CONFIDENCE]
-
     if not filtered:
         return False, text, [], "LOW"
 
-    # Composite entity detection: count unique PII types
     pii_types = list(set([r.entity_type for r in filtered]))
     composite_count = len(pii_types)
-
-    # Higher composite = higher risk level
     if composite_count >= COMPOSITE_RISK_THRESHOLD:
         composite_risk = "HIGH"
     else:
