@@ -1,7 +1,7 @@
 from presidio_analyzer import PatternRecognizer, Pattern
 
 def get_custom_recognizers():
-    # Custom Recognizer 1: Pakistani phone number
+
     pak_phone = PatternRecognizer(
         supported_entity="PAK_PHONE",
         patterns=[
@@ -10,7 +10,7 @@ def get_custom_recognizers():
         ],
         context=["call", "contact", "number","phone", "whatsapp", "mobile"]  
     )
-    # Custom Recognizer 2: API Keys
+
     api_key = PatternRecognizer(
         supported_entity="API_KEY",
         patterns=[
@@ -19,7 +19,7 @@ def get_custom_recognizers():
         ],
         context=["key", "token", "secret","authorization", "api", "bearer"]  
     )
-    # Custom Recognizer 3: Pakistani CNIC
+  
     cnic = PatternRecognizer(
         supported_entity="PAK_CNIC",
         patterns=[
@@ -28,7 +28,6 @@ def get_custom_recognizers():
         context=["cnic", "identity", "id card","national", "nadra"] 
     )
 
-    # Custom Recognizer 4: Internal Employee/Student ID
     internal_id = PatternRecognizer(
         supported_entity="INTERNAL_ID",
         patterns=[
