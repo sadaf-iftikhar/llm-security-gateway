@@ -23,7 +23,7 @@ def home():
 def analyze(message: UserMessage):
     start = time.time()
 
-    # Step 1: Rate limit check
+    # check the rate limit
     if check_rate_limit(message.user_id):
         return {
             "user_id":   message.user_id,
@@ -32,13 +32,13 @@ def analyze(message: UserMessage):
             "latency_ms": 0
         }
         
-    # Step 2: Injection detection
+    # Injection detection
     inj_score, inj_phrases = get_injection_score(message.text)
 
-    # Step 3: PII scan via Presidio
+    # scan PII
     has_pii, masked_text, pii_types, composite_risk = scan_pii(message.text)
 
-    # Step 4: Policy decision
+    #Policy DECISIONS
     if inj_score >= INJECTION_THRESHOLD_BLOCK:
         decision = "BLOCK"
         output   = "[BLOCKED — Attack Detected]"
@@ -58,7 +58,7 @@ def analyze(message: UserMessage):
 
     latency = round((time.time() - start) * 1000, 2)
 
-    # Step 5: Return full result
+    #results
     return {
         "user_id":          message.user_id,
         "original_input":   message.text,
